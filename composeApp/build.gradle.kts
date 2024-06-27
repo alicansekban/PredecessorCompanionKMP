@@ -60,6 +60,10 @@ kotlin {
             implementation(libs.koin.core)
             implementation(libs.navigation.compose)
             implementation(libs.lifecycle.viewmodel.compose)
+            implementation(libs.coil.compose.core)
+            implementation(libs.coil.compose)
+            implementation(libs.coil.mp)
+            implementation(libs.coil.network.ktor)
 
 
         }

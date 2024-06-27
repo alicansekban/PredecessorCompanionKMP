@@ -26,9 +26,18 @@ navigationCompose = "2.7.0-alpha07"
 sqlDelight = "2.0.1"
 lifecycleViewmodelCompose = "2.8.2"
 material3 = "1.2.1"
+coil3 = "3.0.0-alpha06"
+
 
 
 [libraries]
+
+coil-compose = { module = "io.coil-kt.coil3:coil-compose", version.ref = "coil3" }
+coil-compose-core = { module = "io.coil-kt.coil3:coil-compose-core", version.ref = "coil3" }
+coil-network-ktor = { module = "io.coil-kt.coil3:coil-network-ktor", version.ref = "coil3" }
+coil-mp = { module = "io.coil-kt.coil3:coil", version.ref = "coil3" }
+
+
 decompose = { module = "com.arkivanov.decompose:decompose", version.ref = "decompose" }
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
 kotlin-test-junit = { module = "org.jetbrains.kotlin:kotlin-test-junit", version.ref = "kotlin" }

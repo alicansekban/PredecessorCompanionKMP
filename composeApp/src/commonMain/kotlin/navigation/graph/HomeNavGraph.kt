@@ -30,7 +30,7 @@ fun NavGraphBuilder.homeNavGraph(
             HomeScreen(
                 onHeroClicked = {
                     val route = "detail/{heroId}".replace(oldValue = "{heroId}", newValue = it)
-                    navController.navigate(route)
+                    navigation(route)
                 }
             )
         }

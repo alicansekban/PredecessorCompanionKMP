@@ -9,6 +9,11 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import coil3.ImageLoader
+import coil3.PlatformContext
+import coil3.compose.LocalPlatformContext
+import coil3.request.crossfade
+import coil3.util.DebugLogger
 import di.appModule
 import navigation.Navigation
 import org.koin.compose.KoinApplication
@@ -21,6 +26,7 @@ fun App() {
         modules(appModule())
     }) {
 
+        getAsyncImageLoader(LocalPlatformContext.current)
         val navController = rememberNavController()
         MaterialTheme {
             Column(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
@@ -31,3 +37,6 @@ fun App() {
         }
     }
 }
+
+fun getAsyncImageLoader(context: PlatformContext)=
+    ImageLoader.Builder(context).crossfade(true).logger(DebugLogger()).build()
