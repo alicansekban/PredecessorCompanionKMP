@@ -1,6 +1,7 @@
 package ui.detail
 
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -20,7 +21,7 @@ fun DetailScreen(
         viewModel.getHeroDetail(heroName = heroId)
     }
     val state by viewModel.homeViewState.collectAsState()
-    Column {
+    Column(modifier = modifier.fillMaxSize()) {
         when (state) {
             is DetailViewModel.DetailScreenState.Error -> {
                 Text(text = (state as DetailViewModel.DetailScreenState.Error).errorMessage)

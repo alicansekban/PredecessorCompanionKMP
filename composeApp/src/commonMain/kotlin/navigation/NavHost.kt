@@ -1,6 +1,9 @@
 package navigation
 
+import androidx.compose.animation.AnimatedContentTransitionScope
 import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.core.EaseIn
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.interaction.Interaction
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Column
@@ -70,7 +73,31 @@ fun Navigation(
         NavHost(
             modifier = Modifier.padding(paddingValues),
             navController = navController,
-            startDestination = ScreenRoutes.HOME_HOST_ROUTE
+            startDestination = ScreenRoutes.HOME_HOST_ROUTE,
+            enterTransition = {
+                slideIntoContainer(
+                    animationSpec = tween(200, easing = EaseIn),
+                    towards = AnimatedContentTransitionScope.SlideDirection.Left
+                )
+            },
+            exitTransition = {
+                slideOutOfContainer(
+                    animationSpec = tween(200, easing = EaseIn),
+                    towards = AnimatedContentTransitionScope.SlideDirection.Left
+                )
+            },
+            popEnterTransition =  {
+                slideIntoContainer(
+                    animationSpec = tween(200, easing = EaseIn),
+                    towards = AnimatedContentTransitionScope.SlideDirection.Right
+                )
+            },
+            popExitTransition =  {
+                slideOutOfContainer(
+                    animationSpec = tween(200, easing = EaseIn),
+                    towards = AnimatedContentTransitionScope.SlideDirection.Right
+                )
+            }
         ) {
             homeNavGraph(
                 navController = navController,

@@ -36,7 +36,9 @@ fun HomeUIContent(
         columns = GridCells.Fixed(3),
         modifier = modifier.fillMaxSize()) {
         items(heroes) {
-            Column(horizontalAlignment = Alignment.CenterHorizontally) {
+            Column(horizontalAlignment = Alignment.CenterHorizontally, modifier = Modifier.clickable {
+                onHeroClicked.invoke(it.display_name ?: "")
+            }) {
 
                 AsyncImage(
                     modifier = Modifier.size(50.dp).clip(RoundedCornerShape(5.dp)),
@@ -44,9 +46,7 @@ fun HomeUIContent(
                     contentDescription = "",
                     contentScale = ContentScale.Crop
                 )
-                Text(it.display_name ?: "", modifier.clickable {
-                    onHeroClicked(it.display_name ?: "")
-                })
+                Text(it.display_name ?: "")
 
             }
 
