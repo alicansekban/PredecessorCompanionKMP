@@ -15,7 +15,7 @@ fun HomeScreen(
 ){
     val homeScreenState by viewModel.homeViewState.collectAsState()
     LaunchedEffect(Unit) {
-        viewModel.getProducts()
+        viewModel.getHeroes()
     }
     Column(modifier = Modifier.fillMaxSize()) {
         when (homeScreenState) {

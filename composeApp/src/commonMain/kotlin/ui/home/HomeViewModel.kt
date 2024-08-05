@@ -19,7 +19,7 @@ class HomeViewModel(private val networkRepository: NetworkRepository) : ViewMode
     private val _homeViewState: MutableStateFlow<HomeScreenState> = MutableStateFlow(HomeScreenState.Loading)
     val homeViewState = _homeViewState.asStateFlow()
 
-    suspend fun getProducts() {
+    suspend fun getHeroes() {
         CoroutineScope(Dispatchers.IO).launch {
             try {
                 networkRepository.getHeroes().collect{response ->

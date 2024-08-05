@@ -12,7 +12,7 @@ fun <T> toResultFlow(call: suspend () -> NetWorkResult<T?>) : Flow<NetWorkResult
                 println("response${response.data}")
                 emit(NetWorkResult.Success(response.data))
             } catch (e: Exception) {
-              //  emit(NetWorkResult.Error("error", e.toString()))
+                emit(NetWorkResult.Error(response.data, e.message ?: ""))
             }
         }
     }
