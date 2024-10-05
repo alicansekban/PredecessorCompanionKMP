@@ -1,6 +1,7 @@
 package network
 
 import data.HeroesResponse
+import data.LeaderBoardResponse
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.request.get
@@ -35,6 +36,20 @@ class NetworkRepository(private val httpClient: HttpClient) {
 
                 }
             }.body<HeroesResponse>()
+            NetWorkResult.Success(response)
+        }
+    }
+
+    suspend fun getBuilds(heroName : String): Flow<NetWorkResult<LeaderBoardResponse>> {
+        return toResultFlow {
+            val response = httpClient.get {
+                url {
+                    protocol = URLProtocol.HTTPS
+                    host = Constants.BASE_URL_WITHOUT_HTTPS
+                    encodedPath = "builds"
+
+                }
+            }.body<LeaderBoardResponse>()
             NetWorkResult.Success(response)
         }
     }

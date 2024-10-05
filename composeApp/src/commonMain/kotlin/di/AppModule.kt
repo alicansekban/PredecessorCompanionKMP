@@ -1,5 +1,12 @@
 package di
 
+import org.koin.core.context.startKoin
+import org.koin.dsl.KoinAppDeclaration
 
 
-fun appModule() = listOf(providehttpClientModule, provideRepositoryModule, provideviewModelModule)
+fun initKoin(config : KoinAppDeclaration ?= null) {
+    startKoin {
+        config?.invoke(this)
+        modules(provideHttpClientModule, provideRepositoryModule, provideviewModelModule)
+    }
+}

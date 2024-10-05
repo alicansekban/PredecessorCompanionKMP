@@ -38,10 +38,16 @@ kotlin {
             implementation(compose.preview)
             implementation(libs.androidx.activity.compose)
             implementation(libs.ktor.client.android)
+            implementation(libs.ktor.client.okhttp)
+            // koin android
+            implementation(libs.koin.android)
+            implementation(libs.koin.androidx.compose)
+
             implementation(libs.androidx.compose.material3)
             implementation(libs.androidx.lifecycle.viewmodel.compose)
             implementation (libs.lifecycle.runtime.compose)
             implementation(libs.navigation.compose)
+
         }
         commonMain.dependencies {
             implementation(compose.runtime)
